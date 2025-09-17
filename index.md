@@ -3,9 +3,10 @@ layout: default
 title: 首页
 ---
 
-# 我的个人日记
-
-欢迎来到我的个人日记网站！这里记录了我的生活点滴、学习心得和感悟。
+<div class="page-content">
+<h1 class="page-title">我的个人日记</h1>
+<p class="page-subtitle">欢迎来到我的个人世界！这里记录着我的生活点滴、学习心得和内心感悟。每一篇日记都是时光的见证，让我们一起在文字中寻找生活的美好。</p>
+</div>
 
 ## 最近的日记
 
