@@ -34,7 +34,7 @@ title: 首页
 
 {% if site.posts.size > 5 %}
   <div style="text-align: center; margin-top: 2rem;">
-    <a href="{{ '/archive.html' | relative_url }}" class="more-posts">查看更多日记 →</a>
+    <a href="{{ '/archive/' | relative_url }}" class="more-posts">查看更多日记 →</a>
   </div>
 {% endif %}
 
