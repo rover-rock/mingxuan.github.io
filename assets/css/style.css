@@ -1,30 +1,30 @@
 /* 基本样式 */
 :root {
-    /* 主色调 */
-    --primary-color: #2c3e50;
-    --primary-light: #34495e;
-    --accent-color: #3498db;
-    --accent-light: #5dade2;
-    --accent-dark: #2980b9;
+    /* 主色调 - 浅色调方案 */
+    --primary-color: #4a5568;
+    --primary-light: #718096;
+    --accent-color: #38b2ac;
+    --accent-light: #81e6d9;
+    --accent-dark: #2c7a7b;
 
     /* 中性色 */
-    --text-primary: #2c3e50;
-    --text-secondary: #5a6c7d;
-    --text-muted: #7f8c8d;
-    --text-light: #bdc3c7;
+    --text-primary: #2d3748;
+    --text-secondary: #4a5568;
+    --text-muted: #718096;
+    --text-light: #a0aec0;
 
-    /* 背景色 */
+    /* 背景色 - 更浅更柔和 */
     --bg-primary: #ffffff;
-    --bg-secondary: #f8fafc;
-    --bg-tertiary: #f1f5f9;
-    --bg-accent: #eef7ff;
+    --bg-secondary: #fafafa;
+    --bg-tertiary: #f7fafc;
+    --bg-accent: #f0fdfa;
 
     /* 边框和分割线 */
     --border-light: #e2e8f0;
     --border-medium: #cbd5e0;
-    --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.1);
-    --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.1);
-    --shadow-large: 0 10px 25px rgba(0, 0, 0, 0.1);
+    --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.06);
+    --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.05);
+    --shadow-large: 0 10px 25px rgba(0, 0, 0, 0.08);
 
     /* 字体 */
     --font-primary: 'PingFang SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
@@ -55,7 +55,7 @@ body {
     font-family: var(--font-primary);
     line-height: 1.65;
     color: var(--text-primary);
-    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+    background: var(--bg-secondary);
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -193,7 +193,7 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    height: 3px;
+    height: 2px;
     background: linear-gradient(90deg, var(--accent-color), var(--accent-light));
     transform: scaleX(0);
     transform-origin: left;
@@ -220,7 +220,7 @@ body {
 .post-item h2 a {
     color: var(--primary-color);
     text-decoration: none;
-    background: linear-gradient(transparent 60%, var(--bg-accent) 60%);
+    background: linear-gradient(transparent 65%, var(--bg-accent) 65%);
     background-size: 0% 100%;
     background-repeat: no-repeat;
     transition: all 0.3s ease;
@@ -257,12 +257,12 @@ body {
 
 .post-mood, .post-weather {
     padding: var(--space-xs) var(--space-sm);
-    background: linear-gradient(135deg, var(--bg-accent), var(--bg-tertiary));
+    background: var(--bg-accent);
     border-radius: var(--radius-sm);
     font-size: 0.8rem;
     font-weight: 500;
     color: var(--accent-dark);
-    border: 1px solid var(--accent-color);
+    border: 1px solid var(--border-light);
 }
 
 /* 文章页面样式 */
@@ -282,8 +282,8 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--accent-color), var(--accent-light), var(--accent-color));
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-color), var(--accent-light));
 }
 
 .post-header {
@@ -353,7 +353,7 @@ body {
 }
 
 .post-content code {
-    background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-accent));
+    background: var(--bg-tertiary);
     color: var(--accent-dark);
     padding: var(--space-xs) var(--space-sm);
     border-radius: var(--radius-sm);
@@ -385,8 +385,8 @@ body {
 .post-content blockquote {
     margin: var(--space-xl) 0;
     padding: var(--space-lg);
-    border-left: 4px solid var(--accent-color);
-    background: linear-gradient(135deg, var(--bg-accent), var(--bg-tertiary));
+    border-left: 3px solid var(--accent-color);
+    background: var(--bg-accent);
     border-radius: 0 var(--radius-md) var(--radius-md) 0;
     font-style: italic;
     color: var(--text-secondary);
@@ -403,7 +403,7 @@ body {
 .tag {
     display: inline-flex;
     align-items: center;
-    background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
+    background: var(--accent-color);
     color: white;
     padding: var(--space-xs) var(--space-md);
     border-radius: var(--radius-xl);
@@ -411,13 +411,13 @@ body {
     font-weight: 500;
     text-decoration: none;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 4px rgba(52, 152, 219, 0.2);
+    box-shadow: var(--shadow-light);
 }
 
 .tag:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
-    background: linear-gradient(135deg, var(--accent-dark), var(--accent-color));
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-medium);
+    background: var(--accent-dark);
 }
 
 /* 文章底部 */
@@ -500,32 +500,22 @@ body {
 
 /* 页脚样式 */
 .site-footer {
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
-    color: var(--bg-primary);
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
     text-align: center;
     padding: var(--space-2xl) 0;
     margin-top: var(--space-2xl);
-    position: relative;
-}
-
-.site-footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    border-top: 1px solid var(--border-light);
 }
 
 .site-footer a {
-    color: var(--accent-light);
+    color: var(--accent-color);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .site-footer a:hover {
-    color: white;
+    color: var(--accent-dark);
 }
 
 /* 更多特殊页面样式 */
@@ -710,19 +700,21 @@ body {
 /* 深色模式支持 */
 @media (prefers-color-scheme: dark) {
     :root {
-        --text-primary: #e2e8f0;
-        --text-secondary: #a0aec0;
-        --text-muted: #718096;
+        --primary-color: #e2e8f0;
+        --primary-light: #cbd5e0;
+        --text-primary: #f7fafc;
+        --text-secondary: #e2e8f0;
+        --text-muted: #a0aec0;
         --bg-primary: #1a202c;
         --bg-secondary: #2d3748;
         --bg-tertiary: #4a5568;
-        --bg-accent: #2a4365;
+        --bg-accent: #2c5282;
         --border-light: #4a5568;
         --border-medium: #718096;
     }
 
     body {
-        background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+        background: var(--bg-secondary);
     }
 }
 
