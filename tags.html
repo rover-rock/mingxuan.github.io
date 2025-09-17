@@ -1,0 +1,124 @@
+---
+layout: default
+title: 标签
+---
+
+<h1>标签</h1>
+
+<div class="tag-cloud">
+  {% assign tags = site.tags | sort %}
+  {% for tag in tags %}
+    <a href="#{{ tag[0] | slugify }}" class="tag-link" data-count="{{ tag[1].size }}">
+      {{ tag[0] }} ({{ tag[1].size }})
+    </a>
+  {% endfor %}
+</div>
+
+<div class="tag-sections">
+  {% for tag in tags %}
+    <div class="tag-section">
+      <h2 id="{{ tag[0] | slugify }}">{{ tag[0] }}</h2>
+      <ul class="tag-list">
+        {% for post in tag[1] %}
+          <li class="tag-item">
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+            <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+            <span class="category-label">{{ post.categories | first }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endfor %}
+</div>
+
+<style>
+.tag-cloud {
+  text-align: center;
+  margin: 2rem 0;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.tag-link {
+  display: inline-block;
+  margin: 0.3rem;
+  padding: 0.5rem 1rem;
+  background-color: #ecf0f1;
+  color: #2c3e50;
+  text-decoration: none;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.tag-link:hover {
+  background-color: #3498db;
+  color: white;
+  transform: scale(1.05);
+}
+
+.tag-link[data-count="1"] { font-size: 0.8rem; }
+.tag-link[data-count="2"] { font-size: 0.9rem; }
+.tag-link[data-count="3"] { font-size: 1rem; }
+.tag-link[data-count="4"] { font-size: 1.1rem; }
+.tag-link[data-count="5"] { font-size: 1.2rem; }
+
+.tag-sections {
+  margin-top: 3rem;
+}
+
+.tag-section {
+  margin-bottom: 2.5rem;
+}
+
+.tag-section h2 {
+  color: #2c3e50;
+  border-left: 4px solid #3498db;
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.tag-list {
+  list-style: none;
+  padding: 0;
+}
+
+.tag-item {
+  display: flex;
+  align-items: center;
+  padding: 0.6rem;
+  margin-bottom: 0.3rem;
+  background: #fff;
+  border-radius: 4px;
+  border-left: 3px solid #3498db;
+}
+
+.tag-item time {
+  font-family: monospace;
+  color: #666;
+  min-width: 6rem;
+  margin-right: 1rem;
+  font-size: 0.9rem;
+}
+
+.tag-item a {
+  color: #2c3e50;
+  text-decoration: none;
+  flex: 1;
+}
+
+.tag-item a:hover {
+  color: #3498db;
+}
+
+.category-label {
+  font-size: 0.8rem;
+  background-color: #95a5a6;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 10px;
+  margin-left: auto;
+}
+</style>

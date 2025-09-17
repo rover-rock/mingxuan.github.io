@@ -1,0 +1,87 @@
+---
+layout: default
+title: 分类
+---
+
+<h1>分类</h1>
+
+<div class="categories">
+  {% assign categories = site.categories | sort %}
+  {% for category in categories %}
+    <div class="category-section">
+      <h2 id="{{ category[0] | slugify }}">{{ category[0] }} ({{ category[1].size }}篇)</h2>
+      <ul class="category-list">
+        {% for post in category[1] %}
+          <li class="category-item">
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+            <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+            {% if post.mood %}<span class="mood-indicator">{{ post.mood }}</span>{% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endfor %}
+</div>
+
+<style>
+.categories {
+  margin-top: 1rem;
+}
+
+.category-section {
+  margin-bottom: 3rem;
+}
+
+.category-section h2 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.category-list {
+  list-style: none;
+  padding: 0;
+}
+
+.category-item {
+  display: flex;
+  align-items: center;
+  padding: 0.8rem;
+  margin-bottom: 0.5rem;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.category-item:hover {
+  transform: translateX(5px);
+}
+
+.category-item time {
+  font-family: monospace;
+  color: #666;
+  min-width: 6rem;
+  margin-right: 1rem;
+}
+
+.category-item a {
+  color: #2c3e50;
+  text-decoration: none;
+  flex: 1;
+}
+
+.category-item a:hover {
+  color: #3498db;
+}
+
+.mood-indicator {
+  font-size: 0.8rem;
+  background-color: #e74c3c;
+  color: white;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  margin-left: auto;
+}
+</style>

@@ -1,0 +1,71 @@
+---
+layout: default
+title: 日记归档
+---
+
+<h1>日记归档</h1>
+
+<div class="archive">
+  {% for post in site.posts %}
+    {% assign currentdate = post.date | date: "%Y年%m月" %}
+    {% if currentdate != date %}
+      {% unless forloop.first %}</ul>{% endunless %}
+      <h2 id="{{currentdate | slugify}}">{{currentdate}}</h2>
+      <ul class="archive-list">
+      {% assign date = currentdate %}
+    {% endif %}
+    <li class="archive-item">
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d日" }}</time>
+      <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+      {% if post.mood %}<span class="mood-tag">{{ post.mood }}</span>{% endif %}
+    </li>
+    {% if forloop.last %}</ul>{% endif %}
+  {% endfor %}
+</div>
+
+<style>
+.archive h2 {
+  margin: 2rem 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #3498db;
+  color: #2c3e50;
+}
+
+.archive-list {
+  list-style: none;
+  padding: 0;
+}
+
+.archive-item {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.archive-item time {
+  font-weight: bold;
+  color: #666;
+  min-width: 3rem;
+  margin-right: 1rem;
+}
+
+.archive-item a {
+  color: #2c3e50;
+  text-decoration: none;
+  flex: 1;
+}
+
+.archive-item a:hover {
+  color: #3498db;
+}
+
+.mood-tag {
+  font-size: 0.8rem;
+  background-color: #f39c12;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 10px;
+  margin-left: 1rem;
+}
+</style>
